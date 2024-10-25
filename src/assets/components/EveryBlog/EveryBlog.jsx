@@ -1,10 +1,10 @@
 
 import { FiBookmark } from "react-icons/fi";
-const EveryBlog = ({blog,handleBookmark}) => {
+const EveryBlog = ({blog,handleBookmark,handleMarkAsRead}) => {
     const {title,author_name,author_img,cover_image,publishing_date,reading_time,description,hashtags}=blog
     return (
         <div>
-         <img className="rounded-xl mt-5" src={cover_image} alt={title} />
+         <img className="rounded-xl mt-5 object-fill w-full h-[400px]" src={cover_image} alt={title} />
          <div className="flex justify-between px-3 py-5">
             <div className="flex gap-3 items-center justify-center">
                <p>
@@ -41,6 +41,8 @@ const EveryBlog = ({blog,handleBookmark}) => {
          {
             hashtags.map((hash,key)=><span key={key} className="text-xs mx-1 hover:text-blue-500 text-[#11111196]"><a href="">{hash}</a></span>)
          }
+         <br />
+         <button onClick={()=>handleMarkAsRead(reading_time)}><a className="text-sm text-[#111111] hover:text-blue-600 hover:underline">Mark as read</a></button>
         </div>
     );
 };
